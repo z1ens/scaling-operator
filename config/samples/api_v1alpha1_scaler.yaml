@@ -1,0 +1,17 @@
+apiVersion: api.nextfaas.com/v1alpha1
+kind: Scaler
+metadata:
+  labels:
+    app.kubernetes.io/name: scaler
+    app.kubernetes.io/instance: scaler-sample
+    app.kubernetes.io/part-of: scaling-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: scaling-operator
+  name: scaler-sample
+spec:
+  start: 0 #AM
+  end: 23  #PM UTC time
+  replicas: 4
+  deployments:
+    - name: abc  # Function to scale.
+      namespace: default
